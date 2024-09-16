@@ -1,0 +1,29 @@
+Para criar o projeto:
+
+
+npm init -y
+npm install ts-node -D
+npx ts-node "./nome.ts"
+
+npm init -y
+npm install -D vite
+
+No arquivo package.jason, colocar dentro de "script" a dependência:
+ 
+"dev" : "vite", // iniciar servidor de desenvolvimento, apelidos: `vite dev`, `vite serve`
+"build": "vite build", // construir para produção
+"preview": "vite preview", // visualizar localmente a versão de produção
+
+No arquivo HTML e na tag <script> colocar o atributo:
+
+type="module"
+
+Para a utilização de dados fictícios usa uma API chamada Faker:
+
+npm install @faker-js/faker --save-dev
+
+Para usar um id aleatório(gerador de id automático:
+npm install uuid
+import { v4 as uuidv4 } from 'uuid'; // renomeio a função
+uuidv4(); // ⇨ gerará um id: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d' 
+
