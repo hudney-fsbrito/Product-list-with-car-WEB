@@ -1,29 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Lista de produtos com carrinho de compras</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap"
+      rel="stylesheet"
+    />
 
- 
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <title>Frontend Mentor | Lista de produtos com carrinho de compras</title>
 
-  Desserts
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Desserts</h1>
+    <ul class="container-product">
+      <li class="card-product">
+        <img class="img-product"  src="assets/images/image-waffle-desktop.jpg" alt="Image of product">
+        <button>Add to Cart</button>
+        <div class="container-description-product">
+          <p class="type-category-product">Waffle</p>
+          <p class="description-product">Waffle with Berries</p>
+          <p class="price-product">6.50</p>
+        </div>
+      </li>
+    </ul>
 
-  Waffle with Berries
-  Waffle
-  6.50
-  Add to Cart
-
-  Vanilla Bean Crème Brûlée
+    <!-- Vanilla Bean Crème Brûlée
   Crème Brûlée
   7.00
   Add to Cart
@@ -61,15 +81,16 @@
   Vanilla Panna Cotta
   Panna Cotta
   6.50
-  Add to Cart
+  Add to Cart -->
 
-  Your Cart (<!-- Quantity -->)
-  Your added items will appear here
+    <!-- Your Cart (Quantity) -->
+    <!-- Your added items will appear here -->
 
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Hudney Brito</a>.
-  </div>
-  <script type="module" src="index.ts"></script>
-</body>
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by <a href="#">Hudney Brito</a>.
+    </div>
+    <script type="module" src="index.ts"></script>
+  </body>
 </html>
