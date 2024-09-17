@@ -9,3 +9,72 @@
   font-style: normal;
 } 
 */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Red Hat Text", monospace, sans-serif;
+}
+body {
+}
+
+.container-product {
+  width: 300px;
+
+  .card-product {
+    box-sizing: border-box;
+    .container-img {
+      padding: 0%;
+      margin: 0%;
+      position: relative;
+      .img-product {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 10px;
+      }
+      button {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        padding: 10px 20px;
+        border-radius: 25px;
+        border: 1px solid rgb(139, 139, 139);
+        background-color: white;
+      }
+    }
+    .container-description-product {
+      margin-top:40px;
+      line-height: 25px;
+      font-weight: 500;
+      .type-category-product{
+        color: rgb(105, 105, 105);
+        font-weight: 500;
+      }
+      .description-product{
+        color: rgb(33, 33, 33);
+        font-weight: 500;
+      }
+      .price-product{
+        color: hsl(14, 86%, 42%);
+      }
+    }
+  }
+}
+
+.attribution {
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-size: 11px;
+  text-align: center;
+
+  a {
+    color: hsl(228, 45%, 44%);
+    text-decoration: none;
+  }
+}

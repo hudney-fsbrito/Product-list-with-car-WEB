@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link rel="stylesheet" href="index.css">
     <link
       rel="icon"
       type="image/png"
@@ -19,29 +20,27 @@
 
     <title>Frontend Mentor | Lista de produtos com carrinho de compras</title>
 
-    <style>
-      .attribution {
-        font-size: 11px;
-        text-align: center;
-      }
-      .attribution a {
-        color: hsl(228, 45%, 44%);
-      }
-    </style>
   </head>
   <body>
-    <h1>Desserts</h1>
-    <ul class="container-product">
-      <li class="card-product">
-        <img class="img-product"  src="assets/images/image-waffle-desktop.jpg" alt="Image of product">
-        <button>Add to Cart</button>
-        <div class="container-description-product">
-          <p class="type-category-product">Waffle</p>
-          <p class="description-product">Waffle with Berries</p>
-          <p class="price-product">6.50</p>
-        </div>
-      </li>
-    </ul>
+    <div class="container">
+      <h1>Desserts</h1>
+      <ul class="container-product">
+        <li class="card-product">
+          <div class="container-img">
+            <img class="img-product"  src="assets/images/image-waffle-desktop.jpg" alt="Image of product">
+            <button>
+              <img src="assets/images/icon-add-to-cart.svg"></img>
+              Add to Cart
+            </button>
+          </div>
+          <div class="container-description-product">
+            <h5 class="type-category-product">Waffle</h5>
+            <h4 class="description-product">Waffle with Berries</h4>
+            <p class="price-product">&dollar;6.50</p>
+          </div>
+        </li>
+      </ul>
+    </div>
 
     <!-- Vanilla Bean Crème Brûlée
   Crème Brûlée
