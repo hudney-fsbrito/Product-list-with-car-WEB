@@ -1,26 +1,29 @@
-/* 
-// <uniquifier>: Use a unique and descriptive class name
-// <weight>: Use a value from 300 to 700
 
-.red-hat-text-<uniquifier> {
-  font-family: "Red Hat Text", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-} 
-*/
 * {
   margin: 0;
   padding: 0;
   font-family: "Red Hat Text", monospace, sans-serif;
 }
-body {
+
+.container{
+  width: 90%;
+  margin: auto;
+  border: 1px solid red;
+  box-sizing: border-box;
 }
 
 .container-product {
-  width: 300px;
-
+  width: 100%;
+  margin: auto;
+  list-style: none;
+  
+  /* Não sei se vai ser esse código com grid */
+  /* display: grid;
+  grid-template:auto auto auto / auto auto auto;
+  justify-content: space-around;
+  gap: 15px; */
   .card-product {
+    width: 350px;
     box-sizing: border-box;
     .container-img {
       padding: 0%;
@@ -77,4 +80,8 @@ body {
     color: hsl(228, 45%, 44%);
     text-decoration: none;
   }
+}
+
+@media screen {
+  
 }
