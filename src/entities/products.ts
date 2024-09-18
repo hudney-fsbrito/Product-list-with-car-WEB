@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
-class Product{
+
+export class Product{
     private _id: string = uuidv4();
     private _nameProduto: string;
     private _price: number;
