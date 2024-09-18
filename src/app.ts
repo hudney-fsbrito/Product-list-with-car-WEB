@@ -1,7 +1,7 @@
 import data from "../data.json";
 import { Product } from "../src/entities/products";
 
-const createProdutct = () => {
+const createProduct = () => {
   data.map((productItem) => {
     const product = new Product(
       productItem.name,
@@ -12,7 +12,7 @@ const createProdutct = () => {
     console.log(product);
   });
 };
-console.log(createProdutct());
+console.log(createProduct());
 
 // for (let i = 0; i < data.length; i++) {
 // }
