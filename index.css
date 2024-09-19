@@ -1,36 +1,56 @@
+:root {
+  --primary-red: hsl(14, 86%, 42%);
+  --second-green: hsl(159, 69%, 38%);
+
+  --rose-50: hsl(20, 50%, 98%);
+  --rose-100: hsl(13, 31%, 94%);
+  --rose-300: hsl(14, 25%, 72%);
+  --rose-400: hsl(7, 20%, 60%);
+  --rose-500: hsl(12, 20%, 44%);
+  --rose-900: hsl(14, 65%, 9%);
+}
 
 * {
   margin: 0;
   padding: 0;
+}
+body{
   font-family: "Red Hat Text", monospace, sans-serif;
+  font-size: 16px;
 }
 
-.container{
-  padding: 10px;
-  width: 100vw;
-  margin: auto;
+.container {
   box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid red;
+  width: 100vw;
+  display: flex;
+  /* justify-content: center; */
+  
+}
+.product-page{
+  width: 75vw;
 }
 
 .container-product {
+  border: 1px solid green;
   width: 100%;
-  margin: auto;
   list-style: none;
-  bo
-  
-  /* Não sei se vai ser esse código com grid */
-  /* display: grid;
-  grid-template:auto auto auto / auto auto auto;
-  justify-content: space-around;
-  gap: 15px; */
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  gap: 20px;
+  justify-content: center;
+
+
   .card-product {
-    width: 350px;
-    box-sizing: border-box;
+    border: 1px solid var(--second-green);
+    width: 300px;
+
     .container-img {
-      width: 350px;
-      padding: 0%;
-      margin: 0%;
+      width: 100%;
       position: relative;
+
       .img-product {
         display: block;
         width: 100%;
@@ -38,6 +58,7 @@
         object-fit: contain;
         border-radius: 10px;
       }
+
       button {
         position: absolute;
         bottom: 0;
@@ -50,26 +71,41 @@
         padding: 10px 20px;
         border-radius: 25px;
         border: 1px solid rgb(139, 139, 139);
-        background-color: white;
+        background-color: var(--rose-100);
       }
     }
+
     .container-description-product {
-      margin-top:40px;
       line-height: 25px;
-      font-weight: 500;
-      .type-category-product{
-        color: rgb(105, 105, 105);
+      padding: 40px 0px 10px;
+
+      .product-type-category {
+        color: var(--rose-400);
+        font-size: 0.9rem;
         font-weight: 500;
       }
-      .description-product{
-        color: rgb(33, 33, 33);
-        font-weight: 500;
+      
+      .product-name {
+        color: var(--rose-900);
+        font-weight: 600;
+        font-size: 1rem;
       }
-      .price-product{
-        color: hsl(14, 86%, 42%);
+
+      .product-price {
+        color: var(--primary-red);
+        font-weight: 700;
       }
     }
   }
+}
+
+.cart{
+  background-color: var(--rose-50);
+  width: 350px;
+  height: 300px;
+  margin-left: 10px;
+  border: 1px solid blue;
+
 }
 
 .attribution {
@@ -82,8 +118,4 @@
     color: hsl(228, 45%, 44%);
     text-decoration: none;
   }
-}
-
-@media screen {
-  
 }
