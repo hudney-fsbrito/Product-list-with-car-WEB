@@ -1,0 +1,130 @@
+
+  $primary-color-red: hsl(14, 86%, 42%);
+  $second-color-green: hsl(159, 69%, 38%);
+
+  $rose-50: hsl(20, 50%, 98%);
+  $rose-100: hsl(13, 31%, 94%);
+  $rose-300: hsl(14, 25%, 72%);
+  $rose-400: hsl(7, 20%, 60%);
+  $rose-500: hsl(12, 20%, 44%);
+  $rose-900: hsl(14, 65%, 9%);
+
+/* html{
+  border: 1px solid green;
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-family: "Red Hat Text", monospace, sans-serif;
+  font-size: 16px;
+}
+
+.container {
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center;   */
+}
+.product-page{
+  width: 80vw;
+}
+
+.container-product {
+  width: 100%;
+  list-style: none;
+  /* margin: auto; */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  gap: 20px;
+  justify-content: center;
+
+
+  .card-product {
+    width: 100%;
+    box-sizing: content-box;
+    
+    .container-img {
+      box-sizing: content-box;
+      width: 100%;
+      position: relative;
+
+      .img-product {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 10px;
+      }
+
+      button {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        padding: 10px 20px;
+        border-radius: 25px;
+        border: 1px solid rgb(139, 139, 139);
+        background-color: $rose-100;
+      }
+      button:hover {cursor: pointer;}
+    }
+
+    .container-description-product {
+      line-height: 25px;
+      padding: 40px 0px 10px;
+
+      .product-type-category {
+        color: $rose-400;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+      
+      .product-name {
+        color: $rose-900;
+        font-weight: 600;
+        font-size: 1rem;
+      }
+
+      .product-price {
+        color: $primary-color-red;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.cart{
+  background-color: $rose-50;
+  width: 300px;
+  height: 300px;
+  margin-left: 10px;
+  border: 1px solid blue;
+
+}
+
+.attribution {
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-size: 11px;
+  text-align: center;
+
+  a {
+    color: hsl(228, 45%, 44%);
+    text-decoration: none;
+  }
+}
+
+@media  (min-width: 970px) {
+  .container{
+    flex-direction: row;
+  }
+}
