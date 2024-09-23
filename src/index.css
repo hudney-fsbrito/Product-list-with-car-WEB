@@ -31,7 +31,7 @@ body{
   /* align-items: center;   */
 }
 .product-page{
-  width: 75vw;
+  width: 80vw;
 }
 
 .container-product {
@@ -104,7 +104,7 @@ body{
 
 .cart{
   background-color: var(--rose-50);
-  width: 350px;
+  width: 300px;
   height: 300px;
   margin-left: 10px;
   border: 1px solid blue;
