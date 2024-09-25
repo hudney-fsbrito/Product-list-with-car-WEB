@@ -11,7 +11,7 @@ import { ShoppingCart } from "./entities/shoppingCart";
   )
 } */
 
-const createProduct = () => {
+/* const createProduct = () => {
   data.map((productItem) => {
     const product = new Product(
       productItem.name,
@@ -22,16 +22,25 @@ const createProduct = () => {
     product.toHender();
   });
 };
-createProduct()
+createProduct() */
 // console.log(createProduct());
 
-/* const product1 = new Product(
+const banana = new Product(
   data[0].name,
   data[0].price,
   data[0].category,
   data[0].image.desktop
 )
-const product2 = new Product(
+banana.incrementQuantity();
+banana.incrementQuantity();
+banana.incrementQuantity();
+// banana.dencrementQuantity();
+// console.log(banana);
+console.log(ShoppingCart);
+
+
+
+/* const product2 = new Product(
   data[1].name,
   data[1].price,
   data[1].category,

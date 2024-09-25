@@ -26,21 +26,20 @@ const item = new ShoppingCart
 import { Product } from "./products";
 
 export class ShoppingCart {
-  private _products: Product[] = [];
-  private _totalPrice: number = 0.0;
+  private static _products: Product[] = [];
+  private static _totalPrice: number = 0.0;
 
-  addCart(product: Product) {
-    this._totalPrice += product.getPrice;
-    this._products.push(product);
+  static addCart(product: Product) {
+    ShoppingCart._totalPrice += product.getPrice;
+    ShoppingCart._products.push(product);
   }
 
-  get products() {
+  static get products() {
     return this._products;
-  }
-
+  }  
   
-  get total() {
-    return this._totalPrice
-  }
+  // get total() {
+  //   return this._totalPrice
+  // }
   
 }

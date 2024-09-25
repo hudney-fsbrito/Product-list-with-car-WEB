@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import { ShoppingCart } from "./shoppingCart";
 
 export class Product {
   [x: string]: any;
@@ -7,6 +8,8 @@ export class Product {
   private _price: number;
   private _category: string;
   private _imageProductUrl: string;
+  private _quantity: number = 0;
+  private _totalProduct: number = 0;
 
   constructor(
     nameProduct: string,
@@ -20,12 +23,8 @@ export class Product {
     this._imageProductUrl = imageProductUrl;
   }
 
-  get getNameProduct() {
-    return this._nameProduct;
-  }
-  get getPrice() {
-    return this._price;
-  }
+  
+  
 
   toHender() {
     const productPage = document.querySelector(".product-page");
@@ -56,4 +55,35 @@ export class Product {
     console.log(productPage);
     
   }
+
+  updateTotal(){
+    this._totalProduct = this._price * this._quantity;
+  }
+
+  incrementQuantity(){
+    this._quantity += 1;
+    this.updateTotal()
+    
+    ShoppingCart.addCart(this)
+  }
+  dencrementQuantity(){
+    this._quantity -= 1;
+    this.updateTotal()
+  }
+
+  get getTotal() {
+    return this._totalProduct;
+  }
+
+  get getQuantity() {
+    return this._quantity
+  }
+
+  get getNameProduct() {
+    return this._nameProduct;
+  }
+  get getPrice() {
+    return this._price;
+  }
 }
+
