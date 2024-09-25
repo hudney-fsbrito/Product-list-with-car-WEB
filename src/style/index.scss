@@ -37,7 +37,7 @@ body {
 .container-product {
   width: 100%;
   list-style: none;
-  /* margin: auto; */
+  // margin: auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, 300px);
   gap: 20px;

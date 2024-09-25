@@ -28,9 +28,12 @@ export class Product {
   }
 
   toHender() {
-    const containerProduct = document.querySelector(".container-product");
+    const productPage = document.querySelector(".product-page");
 
-    const henderListProduct: string = `
+    const ul = document.createElement("ul");
+    ul.className = "container-product";
+
+    const henderListProduct = `
           <li class="card-product">
             <div class="container-img">
               <img class="img-product"  src=${this._imageProductUrl} alt="Image of product">
@@ -46,6 +49,11 @@ export class Product {
             </div>
           </li>             
         `;
-        containerProduct?.appendChild(henderListProduct)
+    ul.innerHTML = henderListProduct;
+    productPage?.appendChild(ul);
+
+    console.log(ul);
+    console.log(productPage);
+    
   }
 }

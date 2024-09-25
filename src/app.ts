@@ -2,20 +2,14 @@ import data from "../data.json";
 import { Product } from "../src/entities/products";
 import { ShoppingCart } from "./entities/shoppingCart";
 
-for (const product of data) {
+/* for (const product of data) {
   new Product(
     product.name,
     product.price,
     product.category,
     product.image.desktop
   )
-  product.toHender(
-    product.name,
-    product.price,
-    product.category,
-    product.image.desktop
-  );
-}
+} */
 
 const createProduct = () => {
   data.map((productItem) => {
@@ -25,12 +19,7 @@ const createProduct = () => {
       productItem.category,
       productItem.image.desktop
     );
-    product.toHender(
-      productItem.name,
-      productItem.price,
-      productItem.category,
-      productItem.image.desktop
-    );
+    product.toHender();
   });
 };
 createProduct()
