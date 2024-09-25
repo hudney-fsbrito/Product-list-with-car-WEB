@@ -11,7 +11,7 @@ import { ShoppingCart } from "./entities/shoppingCart";
   )
 } */
 
-/* const createProduct = () => {
+const createProduct = () => {
   data.map((productItem) => {
     const product = new Product(
       productItem.name,
@@ -22,7 +22,7 @@ import { ShoppingCart } from "./entities/shoppingCart";
     product.toHender();
   });
 };
-createProduct() */
+createProduct()
 // console.log(createProduct());
 
 const banana = new Product(
