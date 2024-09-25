@@ -2,13 +2,19 @@ import data from "../data.json";
 import { Product } from "../src/entities/products";
 import { ShoppingCart } from "./entities/shoppingCart";
 
-/* for (const product of data) {
+for (const product of data) {
   new Product(
     product.name,
     product.price,
     product.category,
     product.image.desktop
   )
+  product.toHender(
+    product.name,
+    product.price,
+    product.category,
+    product.image.desktop
+  );
 }
 
 const createProduct = () => {
@@ -19,12 +25,18 @@ const createProduct = () => {
       productItem.category,
       productItem.image.desktop
     );
-    console.log(product);
+    product.toHender(
+      productItem.name,
+      productItem.price,
+      productItem.category,
+      productItem.image.desktop
+    );
   });
-}; */
+};
+createProduct()
 // console.log(createProduct());
 
-const product1 = new Product(
+/* const product1 = new Product(
   data[0].name,
   data[0].price,
   data[0].category,
@@ -42,8 +54,6 @@ const cart = new ShoppingCart()
 cart.addCart(product1)
 cart.addCart(product2)
 
-// console.log(cart);
 console.log(cart.products);
 console.log(cart.products.length);
-console.log(cart.total);
-
+console.log(cart.total); */
