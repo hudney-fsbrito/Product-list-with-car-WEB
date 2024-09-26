@@ -3,12 +3,13 @@ import { Product } from "../src/entities/products";
 import { ShoppingCart } from "./entities/shoppingCart";
 
 /* for (const product of data) {
-  new Product(
+  const productItem = new Product(
     product.name,
     product.price,
     product.category,
     product.image.desktop
   )
+  productItem.toHender();
 } */
 
 const createProduct = () => {
@@ -19,7 +20,7 @@ const createProduct = () => {
       productItem.category,
       productItem.image.desktop
     );
-    product.toHender();
+    product.toHenderProducts();
   });
 };
 createProduct()

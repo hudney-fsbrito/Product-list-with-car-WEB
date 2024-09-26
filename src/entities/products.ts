@@ -26,14 +26,14 @@ export class Product {
   
   
 
-  toHender() {
-    const productPage = document.querySelector(".product-page");
+  toHenderProducts() {
+    const ul = document.querySelector(".container-product");
 
-    const ul = document.createElement("ul");
-    ul.className = "container-product";
+    const li = document.createElement("li");
+    li.className = "card-product";
 
     const henderListProduct = `
-          <li class="card-product">
+          
             <div class="container-img">
               <img class="img-product"  src=${this._imageProductUrl} alt="Image of product">
               <button>
@@ -46,13 +46,10 @@ export class Product {
               <h4 class="product-name">${this._nameProduct}</h4>
               <p class="product-price">&dollar;${this._price}</p>
             </div>
-          </li>             
+                      
         `;
-    ul.innerHTML = henderListProduct;
-    productPage?.appendChild(ul);
-
-    console.log(ul);
-    console.log(productPage);
+    li.innerHTML = henderListProduct;
+    ul?.appendChild(li);
     
   }
 
