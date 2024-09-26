@@ -68,6 +68,10 @@ export class Product {
     this.updateTotal()
   }
 
+  get getId() {
+    return this._id
+  }
+
   get getTotal() {
     return this._totalProduct;
   }

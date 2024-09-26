@@ -28,10 +28,19 @@ import { Product } from "./products";
 export class ShoppingCart {
   private static _products: Product[] = [];
   private static _totalPrice: number = 0.0;
+  private static _quantityCart: number = 0;
 
   static addCart(product: Product) {
     ShoppingCart._totalPrice += product.getPrice;
-    ShoppingCart._products.push(product);
+    const existingProduct = this.products.find(cartProduct => cartProduct.getId === product.getId);
+    
+    if (existingProduct) {
+      // existingProduct._quantityCart += product.getQuantity;
+      ShoppingCart._quantityCart += product.getQuantity;     
+      
+    } else {
+      ShoppingCart._products.push(product);
+    }
   }
 
   static get products() {

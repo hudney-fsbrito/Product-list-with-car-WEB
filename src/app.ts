@@ -12,7 +12,7 @@ import { ShoppingCart } from "./entities/shoppingCart";
   productItem.toHender();
 } */
 
-const createProduct = () => {
+/* const createProduct = () => {
   data.map((productItem) => {
     const product = new Product(
       productItem.name,
@@ -23,7 +23,7 @@ const createProduct = () => {
     product.toHenderProducts();
   });
 };
-createProduct()
+createProduct() */
 // console.log(createProduct());
 
 const banana = new Product(
@@ -35,18 +35,31 @@ const banana = new Product(
 banana.incrementQuantity();
 banana.incrementQuantity();
 banana.incrementQuantity();
-// banana.dencrementQuantity();
-// console.log(banana);
-console.log(ShoppingCart);
+banana.incrementQuantity();
 
-
-
-/* const product2 = new Product(
+const maca = new Product(
   data[1].name,
   data[1].price,
   data[1].category,
   data[1].image.desktop
 )
+maca.incrementQuantity();
+maca.incrementQuantity();
+const pera = new Product(
+  data[3].name,
+  data[3].price,
+  data[3].category,
+  data[3].image.desktop
+)
+pera.incrementQuantity();
+pera.incrementQuantity();
+
+console.log(ShoppingCart);
+
+
+
+/* 
+
 
 const cart = new ShoppingCart()
 
