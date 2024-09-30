@@ -12,7 +12,7 @@ import { ShoppingCart } from "./entities/shoppingCart";
   productItem.toHender();
 } */
 
-/* const createProduct = () => {
+const createProduct = () => {
   data.map((productItem) => {
     const product = new Product(
       productItem.name,
@@ -23,9 +23,9 @@ import { ShoppingCart } from "./entities/shoppingCart";
     product.toHenderProducts();
   });
 };
-createProduct() */
+createProduct()
 // console.log(createProduct());
-
+/* 
 const banana = new Product(
   data[0].name,
   data[0].price,
@@ -60,17 +60,4 @@ ShoppingCart.removeProductCart(pera)
 
 console.log(ShoppingCart);
 
-
-
-
-/* 
-
-
-const cart = new ShoppingCart()
-
-cart.addCart(product1)
-cart.addCart(product2)
-
-console.log(cart.products);
-console.log(cart.products.length);
-console.log(cart.total); */
+ */
