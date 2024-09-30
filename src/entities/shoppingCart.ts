@@ -27,28 +27,42 @@ import { Product } from "./products";
 
 export class ShoppingCart {
   private static _products: Product[] = [];
-  private static _totalPrice: number = 0.0;
+  private static _totalPrice: number = 0;
   private static _quantityCart: number = 0;
 
+
+  static calculateQuantity() {
+    this._totalPrice = 0;
+    this._quantityCart = 0;
+
+    this.products.forEach((product) => {
+      this._totalPrice += product.getTotal;
+      this._quantityCart += product.getQuantity; 
+    });
+  }
+
   static addCart(product: Product) {
-    ShoppingCart._totalPrice += product.getPrice;
-    const existingProduct = this.products.find(cartProduct => cartProduct.getId === product.getId);
+    // const existingProduct = this.products.find(cartProduct => cartProduct.getId === product.getId);
+    const existingProduct = this.products.includes(product);
     
-    if (existingProduct) {
-      // existingProduct._quantityCart += product.getQuantity;
-      ShoppingCart._quantityCart += product.getQuantity;     
+    if (!existingProduct) {
+      this._products.push(product);
       
-    } else {
-      ShoppingCart._products.push(product);
     }
+      
+    this.calculateQuantity()
+  }
+
+  static removeProductCart(product: Product) {
+    // this._products = this._products.findIndex((item)=> item.getId === product.getId);
+    this._products = this._products.filter((item)=> item.getId !== product.getId);
+
+    this.calculateQuantity()
   }
 
   static get products() {
     return this._products;
   }  
   
-  // get total() {
-  //   return this._totalPrice
-  // }
   
 }

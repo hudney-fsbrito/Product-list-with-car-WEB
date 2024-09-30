@@ -56,6 +56,11 @@ pera.incrementQuantity();
 
 console.log(ShoppingCart);
 
+ShoppingCart.removeProductCart(pera)
+
+console.log(ShoppingCart);
+
+
 
 
 /* 
