@@ -23,7 +23,14 @@ const createProduct = () => {
     product.toHenderProducts();
   });
 };
-createProduct()
+
+const creatCart = () => {
+    const cart = new ShoppingCart();
+    cart.toHenderCart();
+}
+
+createProduct();
+creatCart()
 // console.log(createProduct());
 /* 
 const banana = new Product(
