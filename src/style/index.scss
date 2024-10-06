@@ -137,6 +137,10 @@ body {
     font-weight: 700;
     font-size: 1.5em;
   }
+  ul{
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .product-item {

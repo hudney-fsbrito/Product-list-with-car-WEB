@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { ShoppingCart } from "./shoppingCart";
+import { log } from "console";
 
 export class Product {
   [x: string]: any;
@@ -23,20 +24,21 @@ export class Product {
     this._imageProductUrl = imageProductUrl;
   }
 
-  
-  
-
-  toHenderProducts() {
+  toHenderHTML() {
     const ul = document.querySelector(".container-product");
+    // const ul = document.getElementById("product-list");
+
+    if (!ul) return;
 
     const li = document.createElement("li");
     li.className = "card-product";
+    li.id = this._id
 
     const henderListProduct = `
           
             <div class="container-img">
               <img class="img-product"  src=${this._imageProductUrl} alt="Image of product">
-              <button>
+              <button id="button-add-to-cart">
                 <img src="assets/images/icon-add-to-cart.svg"></img>
                 Add to Cart
               </button>
@@ -49,27 +51,29 @@ export class Product {
                       
         `;
     li.innerHTML = henderListProduct;
+    li.querySelector("#button-add-to-cart")?.addEventListener("click", () =>
+      this.incrementQuantity()
+    );
     ul?.appendChild(li);
-    
   }
 
-  updateTotal(){
+  updateTotal() {
     this._totalProduct = this._price * this._quantity;
   }
 
-  incrementQuantity(){
+  incrementQuantity() {
     this._quantity += 1;
-    this.updateTotal()
-    
-    ShoppingCart.addCart(this)
+    this.updateTotal();
+
+    ShoppingCart.addCart(this);    
   }
-  dencrementQuantity(){
+  dencrementQuantity() {
     this._quantity -= 1;
-    this.updateTotal()
+    this.updateTotal();
   }
 
   get getId() {
-    return this._id
+    return this._id;
   }
 
   get getTotal() {
@@ -77,7 +81,7 @@ export class Product {
   }
 
   get getQuantity() {
-    return this._quantity
+    return this._quantity;
   }
 
   get getNameProduct() {
@@ -87,4 +91,3 @@ export class Product {
     return this._price;
   }
 }
-

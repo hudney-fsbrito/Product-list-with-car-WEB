@@ -20,17 +20,17 @@ const createProduct = () => {
       productItem.category,
       productItem.image.desktop
     );
-    product.toHenderProducts();
+    product.toHenderHTML();
   });
 };
 
-const creatCart = () => {
-    const cart = new ShoppingCart();
-    cart.toHenderCart();
-}
+// const creatCart = () => {
+//     const cart = new ShoppingCart();
+//     cart.toHenderCart();
+// }
 
 createProduct();
-creatCart()
+// creatCart()
 // console.log(createProduct());
 /* 
 const banana = new Product(
