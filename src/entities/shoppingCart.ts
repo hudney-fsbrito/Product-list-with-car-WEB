@@ -42,42 +42,67 @@ export class ShoppingCart {
 
   static toHenderCart() {
     const divCar = document.getElementById("cartShopping");
-    
+
     if (!divCar) return;
-    
+
     const quantityTotalHTML = divCar.firstElementChild?.firstElementChild;
-    
+
     if (!quantityTotalHTML) return;
-    
+
     quantityTotalHTML.innerHTML = this._quantityCart.toString();
-    
+
     const ulCartList = divCar.querySelector("ul");
     if (!ulCartList) return;
-    ulCartList.innerHTML = ''
-      
-          this._products.forEach((product) => {
-            const liHTML = document.createElement("li");
-            liHTML.className = 'product-item'
-            liHTML.innerHTML = `
-            <div class="product-item-info">
-              <h4 class="product-name-cart">${product.getNameProduct}Waffle with Berries</h4>
-              <div class="product-item-prices">
-                <p class="quantity-product">${product.getQuantity}x</p>
-                <p class="product-price">&dollar;${product.getPrice}</p>
-                <p class="total-product-price">&dollar;${product.getTotal}</p>
-              </div>
-            </div>
-            <div>
-              <img class="icon-remove-item" src="assets/images/icon-remove-item.svg" alt="Ícone para excluir item">
-            </div>
-            `;
-            ulCartList?.appendChild(liHTML);
-          })
-        
-        
-        
+    ulCartList.innerHTML = "";
+    
+    this._products.forEach((product) => {
+      const liHTML = document.createElement("li");
+      liHTML.className = "product-item";
+      liHTML.innerHTML = `
+      <div class="product-item-info">
+        <h4 class="product-name-cart">${product.getNameProduct}Waffle with Berries</h4>
+        <div class="product-item-prices">
+          <p class="quantity-product">${product.getQuantity}x</p>
+          <p class="product-price">&dollar;${product.getPrice}</p>
+          <p class="total-product-price">&dollar;${product.getTotal}</p>
+        </div>
+      </div>
+      <div>
+        <img class="icon-remove-item" src="assets/images/icon-remove-item.svg" alt="Ícone para excluir item">
+      </div>
+      `;
+      ulCartList?.appendChild(liHTML);
+    });
 
-   
+    if (this._products.length >= 1) {
+
+      const divOrderTotal = divCar.querySelector(".order-total");
+      
+      if (!divOrderTotal) return;
+      
+      divOrderTotal.innerHTML = `  
+      <p>Order Total</p>
+      <p class="total-cart">$${this._totalPrice}</p>
+      `;
+      
+      const BtnOrderTotal = divCar.querySelector(".btn");
+      
+      if (!BtnOrderTotal) return;
+      
+      BtnOrderTotal.innerHTML = `
+        
+      <button class="btn-delivery">
+        <img src="assets/images/icon-carbon-neutral.svg" alt="">
+        This is a <span>carbon-neutral</span> delivery
+      </button>
+      <button class="btn-confirm-order">Confirm Order</button>
+        
+      `
+
+      console.log(this._products);
+
+      // divCar.appendChild(divOrderTotal)
+    }
   }
 
   static addCart(product: Product) {
