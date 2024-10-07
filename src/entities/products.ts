@@ -48,9 +48,21 @@ export class Product {
               <h4 class="product-name">${this._nameProduct}</h4>
               <p class="product-price">&dollar;${this._price}</p>
             </div>
-                      
+      <div class="btn-selected" id="button-add-to-cart">
+        <div class="w-3 h-3 btnDecrement"><img  src="assets/images/icon-decrement-quantity.svg"></img></div>
+        <span>${this._quantity}</span>
+        <div class="w-3 h-3 btnIncrement"><img  src="assets/images/icon-increment-quantity.svg"></img></div>
+      </div>
         `;
+    
     li.innerHTML = henderListProduct;
+    const btnSelected = `
+      <button id="button-add-to-cart">
+        <img class="btnDecrement" src="assets/images/icon-decrement-quantity.svg"></img>
+        <span>${this._quantity}</span>
+        <img class="btnIncrement" src="assets/images/icon-increment-quantity.svg"></img>
+      </button>
+    `
     li.querySelector("#button-add-to-cart")?.addEventListener("click", () =>
       this.incrementQuantity()
     );

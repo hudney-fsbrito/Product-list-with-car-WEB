@@ -71,7 +71,7 @@ export class ShoppingCart {
         </div>
       </div>
       <div>
-        <img class="icon-remove-item" src="assets/images/icon-remove-item.svg" alt="Ícone para excluir item">
+        <img class="icon-remove-item cursor-pointer" src="assets/images/icon-remove-item.svg" alt="Ícone para excluir item">
       </div>
       `;
       ulCartList?.appendChild(liHTML);
@@ -109,6 +109,7 @@ export class ShoppingCart {
       //Abre modal ao clicar no botão confirm
       const btnConfirm = document.querySelector(".btn-confirm-order");
       const modal = document.getElementById("modal");
+      if(!modal) return;
       btnConfirm?.addEventListener("click", () => {
         if(modal !== null) {
           return modal.style.display = "flex"
@@ -151,7 +152,11 @@ export class ShoppingCart {
       <p class="total-cart">&dollar;${this._totalPrice}</p>
 
       `
-
+      //Fecha modal
+      const closeModal = modal?.querySelector(".close")
+      closeModal?.addEventListener("click", () => {
+        modal.style.display = "none"
+      })
     } 
   }
 

@@ -78,7 +78,7 @@ body {
       }
 
     
-      button {
+      button, .btn-selected {
         height: 40px;
         width: 150px;
         position: absolute;
@@ -96,7 +96,12 @@ body {
       }
       button:hover {
         cursor: pointer;
+        color: $primary-color-red;
+        border: 1px solid $primary-color-red;
       }
+      // button::before{
+      //   content: url("../../assets/images/icon-decrement-quantity.svg");
+      // }
     }
 
     .container-description-product {
