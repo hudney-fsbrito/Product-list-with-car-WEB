@@ -41,16 +41,19 @@ export class ShoppingCart {
   }
 
   static toHenderCart() {
+    //Seleciona a div do carrinho de compras
     const divCar = document.getElementById("cartShopping");
 
     if (!divCar) return;
 
+    //Atualiza o total de produtos selecionados
     const quantityTotalHTML = divCar.firstElementChild?.firstElementChild;
 
     if (!quantityTotalHTML) return;
 
     quantityTotalHTML.innerHTML = this._quantityCart.toString();
 
+    //Atualiza e add lista de produtos no html do carrinho
     const ulCartList = divCar.querySelector("ul");
     if (!ulCartList) return;
     ulCartList.innerHTML = "";
@@ -60,7 +63,7 @@ export class ShoppingCart {
       liHTML.className = "product-item";
       liHTML.innerHTML = `
       <div class="product-item-info">
-        <h4 class="product-name-cart">${product.getNameProduct}Waffle with Berries</h4>
+        <h4 class="product-name-cart">${product.getNameProduct}</h4>
         <div class="product-item-prices">
           <p class="quantity-product">${product.getQuantity}x</p>
           <p class="product-price">&dollar;${product.getPrice}</p>
@@ -74,22 +77,27 @@ export class ShoppingCart {
       ulCartList?.appendChild(liHTML);
     });
 
+    //Inicia o html do carrinho e atualiza preço total do carrinho
     if (this._products.length >= 1) {
 
       const divOrderTotal = divCar.querySelector(".order-total");
       
       if (!divOrderTotal) return;
       
+      const empty = document.getElementById("empty");
+      if(!empty) return;
+      empty.style.display = 'none'
+
       divOrderTotal.innerHTML = `  
       <p>Order Total</p>
       <p class="total-cart">$${this._totalPrice}</p>
       `;
       
-      const BtnOrderTotal = divCar.querySelector(".btn");
+      const btnOrderTotal = divCar.querySelector(".btn");
       
-      if (!BtnOrderTotal) return;
+      if (!btnOrderTotal) return;
       
-      BtnOrderTotal.innerHTML = `
+      btnOrderTotal.innerHTML = `
         
       <button class="btn-delivery">
         <img src="assets/images/icon-carbon-neutral.svg" alt="">
@@ -98,23 +106,63 @@ export class ShoppingCart {
       <button class="btn-confirm-order">Confirm Order</button>
         
       `
+      //Abre modal ao clicar no botão confirm
+      const btnConfirm = document.querySelector(".btn-confirm-order");
+      const modal = document.getElementById("modal");
+      btnConfirm?.addEventListener("click", () => {
+        if(modal !== null) {
+          return modal.style.display = "flex"
+        }
+      })
+      
+      //Mostra produtos no modal de finalização de compra
+      const ulListModal = modal?.querySelector('ul');
+      if (!ulListModal) return;
+      ulListModal.innerHTML = ""
+      this._products.forEach(product => {
+        const liModal = document.createElement('li')
+        liModal.className = "product-item"
+        liModal.innerHTML = `
 
-      console.log(this._products);
+          <div class="product-item-left">
+            <div class="container-img-order-confirmed">
+              <img class="img-product-order-confirmed"  src=${product.getImage} alt="Image of product">
+            </div>
+            <div class="product-item-info">
+              <h4 class="product-name-cart">${product.getNameProduct}</h4>
+              <div class="product-item-prices">
+                <p class="quantity-product">${product.getQuantity}x</p>
+                <p class="product-price">$${product.getPrice}</p>
+              </div>
+            </div>
 
-      // divCar.appendChild(divOrderTotal)
-    }
+          </div>
+          <p class="total-product-price">&dollar;${product.getTotal}</p>
+
+        `
+        ulListModal.appendChild(liModal)
+      });
+
+
+
+    } 
   }
 
   static addCart(product: Product) {
     // const existingProduct = this.products.find(cartProduct => cartProduct.getId === product.getId);
+
+    //Verifica se existe o produto no carrinho
     const existingProduct = this.products.includes(product);
 
+    //Se não existe, add produto
     if (!existingProduct) {
       this._products.push(product);
     }
 
+    //Atualiza o preço e o total de produtos
     this.calculateQuantity();
 
+    //Atualiza o html do carrinho
     this.toHenderCart();
   }
 
@@ -125,6 +173,10 @@ export class ShoppingCart {
     );
 
     this.calculateQuantity();
+  }
+
+  static orderConrfirm() {
+    const orderConfirm = document.querySelector("")
   }
 
   static get products() {

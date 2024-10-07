@@ -90,4 +90,7 @@ export class Product {
   get getPrice() {
     return this._price;
   }
+  get getImage() {
+    return this._imageProductUrl;
+  }
 }
