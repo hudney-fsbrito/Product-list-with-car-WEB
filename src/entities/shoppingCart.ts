@@ -142,8 +142,15 @@ export class ShoppingCart {
         `
         ulListModal.appendChild(liModal)
       });
+      const orderTotalModal = modal?.querySelector(".order-total")
+      if(!orderTotalModal)return;
 
+      orderTotalModal.innerHTML = `
 
+      <p>Order Total</p>
+      <p class="total-cart">&dollar;${this._totalPrice}</p>
+
+      `
 
     } 
   }

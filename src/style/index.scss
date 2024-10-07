@@ -247,7 +247,8 @@ body {
     margin: 0;
   }
   .product-item{
-    background-color: $rose-100;
+    background-color: $rose-50;
+    border-bottom:1px solid $rose-100;
     .product-item-left{
       display: flex;
       gap: 10px;
