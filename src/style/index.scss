@@ -76,9 +76,11 @@ body {
         object-fit: contain;
         border-radius: 10px;
       }
-
+      .img-product-selected{
+        border: 3px solid  $primary-color-red;
+      }
     
-      button, .btn-selected {
+      button {
         height: 40px;
         width: 150px;
         position: absolute;
@@ -99,9 +101,14 @@ body {
         color: $primary-color-red;
         border: 1px solid $primary-color-red;
       }
-      // button::before{
-      //   content: url("../../assets/images/icon-decrement-quantity.svg");
-      // }
+      .btn-selected{
+        justify-content: space-evenly;
+        color: $rose-50;
+        background-color: $primary-color-red;
+      }
+      .btn-selected:hover {
+        color: $rose-50;
+      }
     }
 
     .container-description-product {

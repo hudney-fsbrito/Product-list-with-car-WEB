@@ -32,7 +32,7 @@ export class Product {
 
     const li = document.createElement("li");
     li.className = "card-product";
-    li.id = this._id
+    li.id = this._id;
 
     const henderListProduct = `
           
@@ -48,24 +48,54 @@ export class Product {
               <h4 class="product-name">${this._nameProduct}</h4>
               <p class="product-price">&dollar;${this._price}</p>
             </div>
-      <div class="btn-selected" id="button-add-to-cart">
-        <div class="w-3 h-3 btnDecrement"><img  src="assets/images/icon-decrement-quantity.svg"></img></div>
-        <span>${this._quantity}</span>
-        <div class="w-3 h-3 btnIncrement"><img  src="assets/images/icon-increment-quantity.svg"></img></div>
-      </div>
         `;
-    
+
     li.innerHTML = henderListProduct;
-    const btnSelected = `
-      <button id="button-add-to-cart">
+   
+    li.querySelector("#button-add-to-cart")?.addEventListener("click", (e) => {
+      this.incrementQuantity();
+      
+      const btn = e.currentTarget as HTMLButtonElement;
+      btn.innerHTML = `
         <img class="btnDecrement" src="assets/images/icon-decrement-quantity.svg"></img>
         <span>${this._quantity}</span>
         <img class="btnIncrement" src="assets/images/icon-increment-quantity.svg"></img>
-      </button>
-    `
-    li.querySelector("#button-add-to-cart")?.addEventListener("click", () =>
-      this.incrementQuantity()
-    );
+      `
+      btn.classList.add("btn-selected")
+
+      //Seleciona a imagem para efeito selected e colocar borda
+      const imgProduct = btn?.previousElementSibling as HTMLImageElement;
+      if(!imgProduct) return;
+      imgProduct.classList.add(".img-product-selected")
+
+      // Selecionando as imagens do botão "-" e "+"
+      const imgDecrement = btn.querySelector(".btnDecrement");
+      const imgIncrement = btn.querySelector(".btnIncrement");
+
+      
+      // Adicionando evento de clique na imagem de decremento
+      imgDecrement?.addEventListener("click", (e) => {
+        this.dencrementQuantity(); // Chama função para decrementar a quantidade
+        e.stopPropagation(); // Prevenir que o clique no botão seja ativado
+        const span = btn.querySelector("span");
+        if (span) {
+          span.textContent = `${this._quantity}`;
+        }
+      });
+
+      // Adicionando evento de clique na imagem de incremento
+      imgIncrement?.addEventListener("click", (e) => {
+        this.incrementQuantity(); // Chama função para incrementar a quantidade
+        e.stopPropagation(); // Prevenir que o clique no botão seja ativado
+        const span = btn.querySelector("span");
+        if (span) {
+          span.textContent = `${this._quantity}`;
+        }
+      });
+
+      
+
+    });
     ul?.appendChild(li);
   }
 
@@ -77,11 +107,13 @@ export class Product {
     this._quantity += 1;
     this.updateTotal();
 
-    ShoppingCart.addCart(this);    
+    ShoppingCart.addCart(this);
   }
   dencrementQuantity() {
     this._quantity -= 1;
     this.updateTotal();
+
+    ShoppingCart.addCart(this)
   }
 
   get getId() {
