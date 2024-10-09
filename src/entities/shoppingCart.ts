@@ -79,7 +79,8 @@ export class ShoppingCart {
 
     //Inicia o html do carrinho e atualiza preço total do carrinho
     if (this._products.length >= 1) {
-      const divOrderTotal = divCar.querySelector(".order-total");
+      const divOrderTotal = divCar.querySelector(".order-total") as HTMLDivElement;
+      divOrderTotal.style.display = "flex"
 
       if (!divOrderTotal) return;
 
@@ -92,7 +93,8 @@ export class ShoppingCart {
       <p class="total-cart">$${this._totalPrice}</p>
       `;
 
-      const btnOrderTotal = divCar.querySelector(".btn");
+      const btnOrderTotal = divCar.querySelector(".btn") as HTMLDivElement;
+      btnOrderTotal.style.display = "block"
 
       if (!btnOrderTotal) return;
 
