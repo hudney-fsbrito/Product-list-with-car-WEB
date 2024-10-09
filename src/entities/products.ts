@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
 import { ShoppingCart } from "./shoppingCart";
-import { log } from "console";
 
 export class Product {
   [x: string]: any;
@@ -101,7 +100,7 @@ export class Product {
         });
       }
 
-      //Reseta butão ao excluir todos os itens no carrinho
+      /* //Reseta butão ao excluir todos os itens no carrinho
       ShoppingCart.products.findIndex((product) => {
         const btn = document.querySelector("#button-add-to-cart") as HTMLButtonElement;
         const imgProduct = btn?.previousElementSibling as HTMLImageElement;
@@ -112,10 +111,6 @@ export class Product {
         console.log(existingProduct);
         
         //Se não existe, reseta butão
-        if (existingProduct === -1) {
-          console.log("Não incuído");
-          this.resetButton(btn, imgProduct)
-        }
       });
     });
     ul?.appendChild(li);
@@ -131,6 +126,13 @@ export class Product {
     // imgProduct.classList.remove("img-product-selected");
     imgProduct.style.border = "none";
     ShoppingCart.removeProductCart(this);
+  }
+
+  deleteProduct(){
+    const btn = document.querySelector("#button-add-to-cart") as HTMLButtonElement;
+    const imgProduct = btn?.previousElementSibling as HTMLImageElement;
+    
+    this.resetButton(btn,imgProduct)
   }
 
   updateTotal() {
