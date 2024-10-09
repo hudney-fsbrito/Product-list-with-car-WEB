@@ -51,52 +51,69 @@ export class Product {
         `;
 
     li.innerHTML = henderListProduct;
-   
+
     li.querySelector("#button-add-to-cart")?.addEventListener("click", (e) => {
       this.incrementQuantity();
-      
+
       const btn = e.currentTarget as HTMLButtonElement;
-      btn.innerHTML = `
+      const imgProduct = btn?.previousElementSibling as HTMLImageElement;
+      
+      if (this._quantity <= 0) {
+        this.resetButton(btn,imgProduct)
+      } else if(this._quantity >= 1) {
+        btn.innerHTML = `
         <img class="btnDecrement" src="assets/images/icon-decrement-quantity.svg"></img>
         <span>${this._quantity}</span>
         <img class="btnIncrement" src="assets/images/icon-increment-quantity.svg"></img>
-      `
-      btn.classList.add("btn-selected")
+        `;
+        btn.classList.add("btn-selected");
 
-      //Seleciona a imagem para efeito selected e colocar borda
-      const imgProduct = btn?.previousElementSibling as HTMLImageElement;
-      if(!imgProduct) return;
-      imgProduct.classList.add(".img-product-selected")
+        //Seleciona a imagem para efeito selected e colocar borda
+        if (!imgProduct) return;
+        // imgProduct.classList.add(".img-product-selected");
+        imgProduct.style.border = "3px solid hsl(14, 86%, 42%)"
+        
 
-      // Selecionando as imagens do botão "-" e "+"
-      const imgDecrement = btn.querySelector(".btnDecrement");
-      const imgIncrement = btn.querySelector(".btnIncrement");
-
-      
-      // Adicionando evento de clique na imagem de decremento
-      imgDecrement?.addEventListener("click", (e) => {
-        this.dencrementQuantity(); // Chama função para decrementar a quantidade
-        e.stopPropagation(); // Prevenir que o clique no botão seja ativado
-        const span = btn.querySelector("span");
-        if (span) {
-          span.textContent = `${this._quantity}`;
-        }
-      });
-
-      // Adicionando evento de clique na imagem de incremento
-      imgIncrement?.addEventListener("click", (e) => {
-        this.incrementQuantity(); // Chama função para incrementar a quantidade
-        e.stopPropagation(); // Prevenir que o clique no botão seja ativado
-        const span = btn.querySelector("span");
-        if (span) {
-          span.textContent = `${this._quantity}`;
-        }
-      });
-
-      
-
+        // Selecionando as imagens do botão "-" e "+"
+        const imgDecrement = btn.querySelector(".btnDecrement");
+        const imgIncrement = btn.querySelector(".btnIncrement");
+        
+        // Adicionando evento de clique na imagem de decremento
+        imgDecrement?.addEventListener("click", (e) => {
+          this.dencrementQuantity(); // Chama função para decrementar a quantidade
+          e.stopPropagation(); // Prevenir que o clique no botão seja ativado
+          const span = btn.querySelector("span");
+          if (span) {
+            span.textContent = `${this._quantity}`;
+          }
+          if (this._quantity <= 0) {
+            this.resetButton(btn,imgProduct)
+          }
+        });
+        
+        // Adicionando evento de clique na imagem de incremento
+        imgIncrement?.addEventListener("click", (e) => {
+          this.incrementQuantity(); // Chama função para incrementar a quantidade
+          e.stopPropagation(); // Prevenir que o clique no botão seja ativado
+          const span = btn.querySelector("span");
+          if (span) {
+            span.textContent = `${this._quantity}`;
+          }
+        });
+        
+      }
     });
     ul?.appendChild(li);
+  }
+
+  resetButton(btn: HTMLButtonElement, imgProduct: HTMLImageElement) {
+    btn.innerHTML = `
+      <img src="assets/images/icon-add-to-cart.svg"></img>
+      Add to Cart
+    `;
+    btn.classList.remove("btn-selected");
+    // imgProduct.classList.remove("img-product-selected");
+    imgProduct.style.border = "none"
   }
 
   updateTotal() {
@@ -113,7 +130,7 @@ export class Product {
     this._quantity -= 1;
     this.updateTotal();
 
-    ShoppingCart.addCart(this)
+    ShoppingCart.addCart(this);
   }
 
   get getId() {
