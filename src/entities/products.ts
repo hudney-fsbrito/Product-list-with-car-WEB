@@ -88,6 +88,8 @@ export class Product {
           }
           if (this._quantity <= 0) {
             this.resetButton(btn,imgProduct)
+            console.log(ShoppingCart.products);
+            
           }
         });
         
@@ -114,6 +116,7 @@ export class Product {
     btn.classList.remove("btn-selected");
     // imgProduct.classList.remove("img-product-selected");
     imgProduct.style.border = "none"
+    ShoppingCart.removeProductCart(this)
   }
 
   updateTotal() {

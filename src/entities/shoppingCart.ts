@@ -177,14 +177,15 @@ export class ShoppingCart {
     //Atualiza o html do carrinho
     this.toHenderCart();
   }
-
+  
   static removeProductCart(product: Product) {
     // this._products = this._products.findIndex((item)=> item.getId === product.getId);
     this._products = this._products.filter(
       (item) => item.getId !== product.getId
     );
-
+    
     this.calculateQuantity();
+    this.toHenderCart();
   }
 
   static orderConrfirm() {
