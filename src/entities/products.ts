@@ -103,14 +103,19 @@ export class Product {
 
       //Reseta butão ao excluir todos os itens no carrinho
       ShoppingCart.products.findIndex((product) => {
-        
+        const btn = document.querySelector("#button-add-to-cart") as HTMLButtonElement;
+        const imgProduct = btn?.previousElementSibling as HTMLImageElement;
         console.log(product._id);
         console.log(ShoppingCart.products);
         //Verifica se existe o produto no carrinho
-        const existingProduct = ShoppingCart.products.includes(product)
+        const existingProduct = ShoppingCart.products.indexOf(product)
         console.log(existingProduct);
         
         //Se não existe, reseta butão
+        if (existingProduct === -1) {
+          console.log("Não incuído");
+          this.resetButton(btn, imgProduct)
+        }
       });
     });
     ul?.appendChild(li);

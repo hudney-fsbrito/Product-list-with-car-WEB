@@ -207,7 +207,7 @@ export class ShoppingCart {
     );
 
     this.calculateQuantity();
-    this.toHenderCart();
+    this.toHenderCart();    
   }
 
   static orderConrfirm() {
