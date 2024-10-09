@@ -114,3 +114,11 @@ Ele usa principalmente HTML, TypeScript e SCSS. A configuração do projeto incl
   @import "tailwindcss/components";
   @import "tailwindcss/utilities";
   ```
+
+# 
+
+
+   <ul>
+      <li class="links"><a href="https://www.linkedin.com/in/hudneyfernandes-dev">LinkedIn</a></li>
+      <li class="links"> <a href="https://github.com/hudney-fsbrito">Github</a></li>
+   </ul>
