@@ -57,10 +57,10 @@ export class Product {
 
       const btn = e.currentTarget as HTMLButtonElement;
       const imgProduct = btn?.previousElementSibling as HTMLImageElement;
-      
+
       if (this._quantity <= 0) {
-        this.resetButton(btn,imgProduct)
-      } else if(this._quantity >= 1) {
+        this.resetButton(btn, imgProduct);
+      } else if (this._quantity >= 1) {
         btn.innerHTML = `
         <img class="btnDecrement" src="assets/images/icon-decrement-quantity.svg"></img>
         <span>${this._quantity}</span>
@@ -71,13 +71,12 @@ export class Product {
         //Seleciona a imagem para efeito selected e colocar borda
         if (!imgProduct) return;
         // imgProduct.classList.add(".img-product-selected");
-        imgProduct.style.border = "3px solid hsl(14, 86%, 42%)"
-        
+        imgProduct.style.border = "3px solid hsl(14, 86%, 42%)";
 
         // Selecionando as imagens do botão "-" e "+"
         const imgDecrement = btn.querySelector(".btnDecrement");
         const imgIncrement = btn.querySelector(".btnIncrement");
-        
+
         // Adicionando evento de clique na imagem de decremento
         imgDecrement?.addEventListener("click", (e) => {
           this.dencrementQuantity(); // Chama função para decrementar a quantidade
@@ -87,10 +86,10 @@ export class Product {
             span.textContent = `${this._quantity}`;
           }
           if (this._quantity <= 0) {
-            this.resetButton(btn,imgProduct)
+            this.resetButton(btn, imgProduct);
           }
         });
-        
+
         // Adicionando evento de clique na imagem de incremento
         imgIncrement?.addEventListener("click", (e) => {
           this.incrementQuantity(); // Chama função para incrementar a quantidade
@@ -100,10 +99,22 @@ export class Product {
             span.textContent = `${this._quantity}`;
           }
         });
-        
       }
+
+      //Reseta butão ao excluir todos os itens no carrinho
+      ShoppingCart.products.findIndex((product) => {
+        
+        console.log(product._id);
+        console.log(ShoppingCart.products);
+        //Verifica se existe o produto no carrinho
+        const existingProduct = ShoppingCart.products.includes(product)
+        console.log(existingProduct);
+        
+        //Se não existe, reseta butão
+      });
     });
     ul?.appendChild(li);
+
   }
 
   resetButton(btn: HTMLButtonElement, imgProduct: HTMLImageElement) {
@@ -113,9 +124,8 @@ export class Product {
     `;
     btn.classList.remove("btn-selected");
     // imgProduct.classList.remove("img-product-selected");
-    imgProduct.style.border = "none"
-    ShoppingCart.removeProductCart(this)
-    
+    imgProduct.style.border = "none";
+    ShoppingCart.removeProductCart(this);
   }
 
   updateTotal() {

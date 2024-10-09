@@ -74,6 +74,15 @@ export class ShoppingCart {
         <img class="icon-remove-item cursor-pointer" src="assets/images/icon-remove-item.svg" alt="Ícone para excluir item">
       </div>
       `;
+
+      //Remove todos os produtos de uma categoria
+      const imgDelete = liHTML.querySelector(".icon-remove-item") as HTMLImageElement;
+      
+      imgDelete?.addEventListener("click", ()=> {
+        this.removeProductCart(product)        
+      })
+
+
       ulCartList?.appendChild(liHTML);
     });
 
