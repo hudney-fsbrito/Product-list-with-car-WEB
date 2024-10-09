@@ -208,6 +208,7 @@ export class ShoppingCart {
 
     this.calculateQuantity();
     this.toHenderCart();
+    product.deleteProduct()
   }
 
   static orderConrfirm() {
