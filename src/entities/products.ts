@@ -100,22 +100,6 @@ export class Product {
         });
       }
 
-     /*  ShoppingCart.products.findIndex((product) => {
-      
-        console.log(product._id);
-        console.log(ShoppingCart.products);
-        //Verifica se existe o produto no carrinho
-        const existingProduct = ShoppingCart.products.indexOf(product)
-        console.log(existingProduct);
-        
-        //Se não existe, reseta butão
-        // if (product.existingProduct !== 0) {
-        //   console.log(existingProduct, " Não existe");
-          
-        //   product.resetButton(btn,imgProduct)
-        // }
-      }); */
-
     });
     ul?.appendChild(li);
 
