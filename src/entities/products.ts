@@ -100,10 +100,8 @@ export class Product {
         });
       }
 
-      /* //Reseta butão ao excluir todos os itens no carrinho
-      ShoppingCart.products.findIndex((product) => {
-        const btn = document.querySelector("#button-add-to-cart") as HTMLButtonElement;
-        const imgProduct = btn?.previousElementSibling as HTMLImageElement;
+     /*  ShoppingCart.products.findIndex((product) => {
+      
         console.log(product._id);
         console.log(ShoppingCart.products);
         //Verifica se existe o produto no carrinho
@@ -111,13 +109,22 @@ export class Product {
         console.log(existingProduct);
         
         //Se não existe, reseta butão
-      });
+        // if (product.existingProduct !== 0) {
+        //   console.log(existingProduct, " Não existe");
+          
+        //   product.resetButton(btn,imgProduct)
+        // }
+      }); */
+
     });
     ul?.appendChild(li);
 
   }
 
   resetButton(btn: HTMLButtonElement, imgProduct: HTMLImageElement) {
+
+    this._quantity = 0;
+
     btn.innerHTML = `
       <img src="assets/images/icon-add-to-cart.svg"></img>
       Add to Cart
@@ -125,14 +132,28 @@ export class Product {
     btn.classList.remove("btn-selected");
     // imgProduct.classList.remove("img-product-selected");
     imgProduct.style.border = "none";
+
+      //Remove o produto do carrinho
     ShoppingCart.removeProductCart(this);
   }
 
   deleteProduct(){
-    const btn = document.querySelector("#button-add-to-cart") as HTMLButtonElement;
-    const imgProduct = btn?.previousElementSibling as HTMLImageElement;
-    
-    this.resetButton(btn,imgProduct)
+    // Seleciona o botão correspondente ao produto e sua imagem
+    const productElement = document.getElementById(this.getId);
+    if (productElement) {
+      const btn = productElement.querySelector(
+        "#button-add-to-cart"
+      ) as HTMLButtonElement;
+      const imgProduct = productElement.querySelector(
+        ".img-product"
+      ) as HTMLImageElement;
+
+      // Reseta o botão e imagem somente se existir
+      if (btn && imgProduct) {
+        this.resetButton(btn, imgProduct);
+      }
+    }
+
   }
 
   updateTotal() {

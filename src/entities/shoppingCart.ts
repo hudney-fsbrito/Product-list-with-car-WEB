@@ -75,21 +75,24 @@ export class ShoppingCart {
       </div>
       `;
 
-      //Remove todos os produtos de uma categoria
-      const imgDelete = liHTML.querySelector(".icon-remove-item") as HTMLImageElement;
-      
-      imgDelete?.addEventListener("click", ()=> {
-        this.removeProductCart(product)        
-      })
+      //Remove todos os produtos de uma categoria do carrinho
+      const imgDelete = liHTML.querySelector(
+        ".icon-remove-item"
+      ) as HTMLImageElement;
 
+      imgDelete?.addEventListener("click", () => {
+        this.removeProductCart(product);
+      });
 
       ulCartList?.appendChild(liHTML);
     });
 
     //Inicia o html do carrinho e atualiza preço total do carrinho
     if (this._products.length >= 1) {
-      const divOrderTotal = divCar.querySelector(".order-total") as HTMLDivElement;
-      divOrderTotal.style.display = "flex"
+      const divOrderTotal = divCar.querySelector(
+        ".order-total"
+      ) as HTMLDivElement;
+      divOrderTotal.style.display = "flex";
 
       if (!divOrderTotal) return;
 
@@ -103,7 +106,7 @@ export class ShoppingCart {
       `;
 
       const btnOrderTotal = divCar.querySelector(".btn") as HTMLDivElement;
-      btnOrderTotal.style.display = "block"
+      btnOrderTotal.style.display = "block";
 
       if (!btnOrderTotal) return;
 
@@ -174,11 +177,13 @@ export class ShoppingCart {
 
       const btnOrderTotal = divCar.querySelector(".btn") as HTMLDivElement;
       if (!btnOrderTotal) return;
-      btnOrderTotal.style.display = "none"
-      
-      const divOrderTotal = divCar.querySelector(".order-total") as HTMLDivElement;
+      btnOrderTotal.style.display = "none";
+
+      const divOrderTotal = divCar.querySelector(
+        ".order-total"
+      ) as HTMLDivElement;
       if (!divOrderTotal) return;
-      divOrderTotal.style.display = "none"
+      divOrderTotal.style.display = "none";
     }
   }
 
@@ -202,12 +207,16 @@ export class ShoppingCart {
 
   static removeProductCart(product: Product) {
     // this._products = this._products.findIndex((item)=> item.getId === product.getId);
+
     this._products = this._products.filter(
       (item) => item.getId !== product.getId
     );
 
     this.calculateQuantity();
-    this.toHenderCart();    
+    this.toHenderCart();
+
+    // Seleciona o botão correspondente ao produto e sua imagem
+    product.deleteProduct()
   }
 
   static orderConrfirm() {

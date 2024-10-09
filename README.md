@@ -18,6 +18,10 @@ Ele usa principalmente HTML, TypeScript e SCSS. A configuração do projeto incl
 - Exibição dinâmica do total de itens no carrinho
 - Cálculo do valor total dos produtos
 
+![Seleção de produtos](./assets/images/SelectedProducts.png)
+![Modal de pagamento](./assets/images/Modal.png)
+
+
 ## Instalação
 
 1. Clone o repositório:
