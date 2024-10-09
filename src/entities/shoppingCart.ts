@@ -57,7 +57,7 @@ export class ShoppingCart {
     const ulCartList = divCar.querySelector("ul");
     if (!ulCartList) return;
     ulCartList.innerHTML = "";
-    
+
     this._products.forEach((product) => {
       const liHTML = document.createElement("li");
       liHTML.className = "product-item";
@@ -79,24 +79,23 @@ export class ShoppingCart {
 
     //Inicia o html do carrinho e atualiza preço total do carrinho
     if (this._products.length >= 1) {
-
       const divOrderTotal = divCar.querySelector(".order-total");
-      
+
       if (!divOrderTotal) return;
-      
+
       const empty = document.getElementById("empty");
-      if(!empty) return;
-      empty.style.display = 'none'
+      if (!empty) return;
+      empty.style.display = "none";
 
       divOrderTotal.innerHTML = `  
       <p>Order Total</p>
       <p class="total-cart">$${this._totalPrice}</p>
       `;
-      
+
       const btnOrderTotal = divCar.querySelector(".btn");
-      
+
       if (!btnOrderTotal) return;
-      
+
       btnOrderTotal.innerHTML = `
         
       <button class="btn-delivery">
@@ -105,24 +104,24 @@ export class ShoppingCart {
       </button>
       <button class="btn-confirm-order">Confirm Order</button>
         
-      `
+      `;
       //Abre modal ao clicar no botão confirm
       const btnConfirm = document.querySelector(".btn-confirm-order");
       const modal = document.getElementById("modal");
-      if(!modal) return;
+      if (!modal) return;
       btnConfirm?.addEventListener("click", () => {
-        if(modal !== null) {
-          return modal.style.display = "flex"
+        if (modal !== null) {
+          return (modal.style.display = "flex");
         }
-      })
-      
+      });
+
       //Mostra produtos no modal de finalização de compra
-      const ulListModal = modal?.querySelector('ul');
+      const ulListModal = modal?.querySelector("ul");
       if (!ulListModal) return;
-      ulListModal.innerHTML = ""
-      this._products.forEach(product => {
-        const liModal = document.createElement('li')
-        liModal.className = "product-item"
+      ulListModal.innerHTML = "";
+      this._products.forEach((product) => {
+        const liModal = document.createElement("li");
+        liModal.className = "product-item";
         liModal.innerHTML = `
 
           <div class="product-item-left">
@@ -140,24 +139,36 @@ export class ShoppingCart {
           </div>
           <p class="total-product-price">&dollar;${product.getTotal}</p>
 
-        `
-        ulListModal.appendChild(liModal)
+        `;
+        ulListModal.appendChild(liModal);
       });
-      const orderTotalModal = modal?.querySelector(".order-total")
-      if(!orderTotalModal)return;
+      const orderTotalModal = modal?.querySelector(".order-total");
+      if (!orderTotalModal) return;
 
       orderTotalModal.innerHTML = `
 
       <p>Order Total</p>
       <p class="total-cart">&dollar;${this._totalPrice}</p>
 
-      `
+      `;
       //Fecha modal
-      const closeModal = modal?.querySelector(".close")
+      const closeModal = modal?.querySelector(".close");
       closeModal?.addEventListener("click", () => {
-        modal.style.display = "none"
-      })
-    } 
+        modal.style.display = "none";
+      });
+    } else if (this._products.length === 0) {
+      const empty = document.getElementById("empty");
+      if (!empty) return;
+      empty.style.display = "flex";
+
+      const btnOrderTotal = divCar.querySelector(".btn") as HTMLDivElement;
+      if (!btnOrderTotal) return;
+      btnOrderTotal.style.display = "none"
+      
+      const divOrderTotal = divCar.querySelector(".order-total") as HTMLDivElement;
+      if (!divOrderTotal) return;
+      divOrderTotal.style.display = "none"
+    }
   }
 
   static addCart(product: Product) {
@@ -177,19 +188,19 @@ export class ShoppingCart {
     //Atualiza o html do carrinho
     this.toHenderCart();
   }
-  
+
   static removeProductCart(product: Product) {
     // this._products = this._products.findIndex((item)=> item.getId === product.getId);
     this._products = this._products.filter(
       (item) => item.getId !== product.getId
     );
-    
+
     this.calculateQuantity();
     this.toHenderCart();
   }
 
   static orderConrfirm() {
-    const orderConfirm = document.querySelector("")
+    const orderConfirm = document.querySelector("");
   }
 
   static get products() {
