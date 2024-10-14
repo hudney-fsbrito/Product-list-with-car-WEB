@@ -1,4 +1,4 @@
-import data from "../data.json";
+import data from "../assets/data.json";
 import { Product } from "../src/entities/products";
 
 const createProduct = () => {
